@@ -7,8 +7,6 @@
 #define F_CPU 16000000UL
 
 #include "uart.h"
-#include <stdint.h>
-#include <avr/io.h>
 
 // Initializes the uart
 void uart::init(uint32_t baudRate){

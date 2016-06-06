@@ -15,7 +15,6 @@
 
 int main(void)
 {
-	DDRB |= (1 << DDB5);
 	uart usb;
 	
 	usb.init(250000);
