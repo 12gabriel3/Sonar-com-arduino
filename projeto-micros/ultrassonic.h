@@ -17,8 +17,10 @@
 
 class Ultrassonic {
 		uint16_t getPulseWidth();
+		void sendPulse();
 	public:
 		float getRange();
+		void init();
 };
 
 
