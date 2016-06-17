@@ -64,33 +64,3 @@ void Uart::println(uint16_t number){
 	putchar('0'+number);
 	putchar('\n');
 }
-
-void Uart::print(uint16_t number){
-	uint8_t dez_mil, mil, cen, dez;
-	
-	dez_mil = number / 10000;
-	if(dez_mil != 0){
-		putchar('0'+dez_mil);
-		number -= dez_mil * 10000;
-	}
-
-	mil = number / 1000;
-	if(mil != 0){
-		putchar('0'+mil);
-		number -= mil * 1000;
-	}
-	
-	cen = number / 100;
-	if(cen != 0){
-		putchar('0'+cen);
-		number -= cen * 100;
-	}
-	
-	dez = number / 10;
-	if(dez != 0){
-		putchar('0'+dez);
-		number -= dez* 10;
-	}
-	
-	putchar('0'+number);
-}

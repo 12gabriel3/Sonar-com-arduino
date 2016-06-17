@@ -18,10 +18,14 @@ void Ultrasonic::init(){
 	// Sets PORTB0 as input (ICP1) with no pull up resistor
 	DDRB &= ~(1<<DDB0);
 	PORTB &= ~(1<<PORTB0);
+
+	DDRD |= 1<<DDD7;
 	
 	// Initializes the timer1
 	
 	TCCR1B |= 1<<ICNC1 | 1<<ICES1 | 1<<CS11; // Input capture noise filter, rising edge interrupt, prescale
+
+	TIMSK1 |= 1<<ICIE1;
 }
 
 uint16_t Ultrasonic::getRange(){

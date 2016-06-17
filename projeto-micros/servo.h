@@ -9,10 +9,12 @@
 #ifndef SERVO_H_
 #define SERVO_H_
 
+#include <inttypes.h>
+
 class Servo{
 		public:
 	void init();
-	void setAngle(uint8_t)ç
+	void setAngle(uint8_t);
 };
 
 
