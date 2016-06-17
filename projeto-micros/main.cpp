@@ -10,6 +10,7 @@
 #include <util/delay.h>
 #include <stdint.h>
 #include "uart.h"
+#include "ultrasonic.h"
 
 
 
@@ -17,13 +18,14 @@ int main(void)
 {
 	Uart usb;
 	Ultrasonic sensor;
-	
+	sensor.init();
 	usb.init(250000);
+	sei();
+	
 	
 	while (1) 
     {
-		
-		
+		usb.println(sensor.getRange());
     }
 }
 

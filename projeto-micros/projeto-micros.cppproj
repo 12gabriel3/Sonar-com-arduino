@@ -176,10 +176,10 @@
     <Compile Include="uart.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ultrassonic.cpp">
+    <Compile Include="ultrasonic.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ultrassonic.h">
+    <Compile Include="ultrasonic.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

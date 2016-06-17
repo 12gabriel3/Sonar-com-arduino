@@ -6,6 +6,7 @@
  */ 
 
 #include "ultrasonic.h"
+#include <avr/delay.h>
 
 // This ISR records the time of the pin change
 volatile uint16_t _event_time;
@@ -23,9 +24,9 @@ void Ultrasonic::init(){
 	TCCR1B |= 1<<ICNC1 | 1<<ICES1 | 1<<CS11; // Input capture noise filter, rising edge interrupt, prescale
 }
 
-float Ultrasonic::getRange(){
+uint16_t Ultrasonic::getRange(){
 	sendPulse();
-	return getPulseWidth()/116.0;
+	return (uint16_t)((uint32_t)getPulseWidth()*10/116);
 }
 
 void Ultrasonic::sendPulse(){
@@ -54,5 +55,5 @@ uint16_t Ultrasonic::getPulseWidth(){
 	falling_edge_time = _event_time;
 	
 	// Returns the difference
-	return (falling_edge_time - rising_edge_time) 
+	return (falling_edge_time - rising_edge_time); 
 }
