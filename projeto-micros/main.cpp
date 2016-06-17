@@ -15,15 +15,14 @@
 
 int main(void)
 {
-	uart usb;
+	Uart usb;
+	Ultrasonic sensor;
 	
 	usb.init(250000);
 	
 	while (1) 
     {
-		PORTB ^= (1<<PORTB5);
-		usb.println("Givaldo Lino");
-		_delay_ms(500);
+		
 		
     }
 }

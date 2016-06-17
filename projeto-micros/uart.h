@@ -12,7 +12,7 @@
 #include <stdint.h>
 #include <avr/io.h>
 
-class uart {
+class Uart {
 	public:
 		void init(uint32_t);
 		void putchar(uint8_t);

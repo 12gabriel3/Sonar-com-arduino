@@ -9,7 +9,7 @@
 #include "uart.h"
 
 // Initializes the uart
-void uart::init(uint32_t baudRate){
+void Uart::init(uint32_t baudRate){
 	// Value written on register
 	uint16_t ubrr = (F_CPU/16/baudRate)-1; 
 	
@@ -24,7 +24,7 @@ void uart::init(uint32_t baudRate){
 	UCSR0C = (1<<USBS0)|(3<<UCSZ00);
 }
 
-void uart::putchar(uint8_t data){
+void Uart::putchar(uint8_t data){
 	// Wait for empty transmit buffer
 	while(!(UCSR0A & (1<<UDRE0)));
 	
@@ -32,7 +32,7 @@ void uart::putchar(uint8_t data){
 	UDR0 = data;
 }
 
-void uart::println(const char * str){
+void Uart::println(const char * str){
 	int i = 0;
 	// Prints until it encounters end of string character
 	while(str[i] != '\0'){
