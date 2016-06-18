@@ -14,7 +14,7 @@ ISR(TIMER1_CAPT_vect){
 	_event_time = ICR1;
 }
 
-void Ultrasonic::init(){
+Ultrasonic::Ultrasonic(){
 	// Sets PORTB0 as input (ICP1) with no pull up resistor
 	DDRB &= ~(1<<DDB0);
 	PORTB &= ~(1<<PORTB0);

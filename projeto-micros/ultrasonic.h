@@ -21,7 +21,7 @@ class Ultrasonic {
 		void sendPulse();
 	public:
 		uint16_t getRange();
-		void init();
+		Ultrasonic();
 };
 
 

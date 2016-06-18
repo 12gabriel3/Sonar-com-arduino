@@ -18,7 +18,7 @@ int main(void)
 {
 	Uart usb;
 	Ultrasonic sensor;
-	sensor.init();
+	
 	usb.init(250000);
 	sei();
 	
@@ -26,6 +26,8 @@ int main(void)
 	while (1) 
     {
 		usb.println(sensor.getRange());
+		
+		_delay_ms(100);
     }
 }
 
