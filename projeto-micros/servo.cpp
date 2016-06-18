@@ -29,6 +29,8 @@ Servo::Servo(){
 
 void Servo::setAngle(uint8_t angle){
 	// Faz uma regrinha de tres
+	// O angulo 0 corresponde ao valor 1000 do registrador - largura de pulso de 0.5ms
+	// e o angulo 180 corresponde ao valor 5000 - largura de 2.5 ms
 	uint16_t registrador = (uint16_t)(angle*(400.0)/18.0) + 1000;
 	OCR1B = registrador;
 }

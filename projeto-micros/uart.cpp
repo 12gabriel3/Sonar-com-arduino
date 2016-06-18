@@ -37,24 +37,19 @@ void Uart::println(const char * str){
 }
 
 void Uart::println(uint16_t number){
-	uint8_t dez_mil, mil, cen, dez;
+	uint8_t digits[5];
+	uint8_t i = 0;
 	
-	dez_mil = number / 10000;
-	putchar('0'+dez_mil);
-	number -= dez_mil * 10000;
-
-	mil = number / 1000;
-	putchar('0'+mil);
-	number -= mil * 1000;
+	do{
+		digits[i] = number%10;
+		number /= 10;
+		i++;
+	} while(number);
 	
-	cen = number / 100;
-	putchar('0'+cen);
-	number -= cen * 100;
+	do{
+		i--;
+		putchar('0'+digits[i]);
+	}while(i);
 	
-	dez = number / 10;
-	putchar('0'+dez);
-	number -= dez* 10;
-	
-	putchar('0'+number);
 	putchar('\n');
 }

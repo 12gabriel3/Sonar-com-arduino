@@ -30,6 +30,12 @@ Ultrasonic::Ultrasonic(){
 
 uint16_t Ultrasonic::getRange(){
 	sendPulse();
+	// A funcao getPulseWidth retorna o numero de ciclos do timer que ocorreram enquanto
+	// o pino echo do sensor estava em nivel alto. Eh o tempo que o som leva para refletir
+	// Cada ciclo do timer representa 0.5us = 8/16MHz
+	// No datasheet do sensor consta que 1 cm = 58 uS
+	// Para extrair os cm no nosso caso eh preciso dividir a largura do pulso por 116
+	// Multiplicmos o valor por 10 para obter os milimetros
 	return (uint16_t)((uint32_t)getPulseWidth()*10/116);
 }
 
