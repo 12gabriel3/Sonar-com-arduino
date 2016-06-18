@@ -16,10 +16,9 @@
 
 int main(void)
 {
-	Uart usb;
+	Uart usb(250000);
 	Ultrasonic sensor;
 	
-	usb.init(250000);
 	sei();
 	
 	

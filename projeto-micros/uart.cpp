@@ -1,15 +1,9 @@
-/*
- * uart.cpp
- *
- * Created: 28/05/2016 02:24:12
- *  Author: Gabriel
- */ 
 #define F_CPU 16000000UL
 
 #include "uart.h"
 
 // Initializes the uart
-void Uart::init(uint32_t baudRate){
+Uart::Uart(uint32_t baudRate){
 	// Value written on register
 	uint16_t ubrr = (F_CPU/16/baudRate)-1; 
 	
