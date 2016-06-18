@@ -13,7 +13,7 @@
 
 class Servo{
 		public:
-	void init();
+	Servo();
 	void setAngle(uint8_t);
 };
 

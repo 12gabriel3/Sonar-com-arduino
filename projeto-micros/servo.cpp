@@ -10,7 +10,7 @@
 #include <avr/io.h>
 
 
-void Servo::init(){
+Servo::Servo(){
 	DDRB |= (1<<DDB2);  // Configura o pino do servo como saida
   
   /*
