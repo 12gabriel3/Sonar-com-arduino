@@ -1,13 +1,9 @@
-/*
- * Ultrassonic.cpp
- *
- * Created: 06/06/2016 18:48:08
- *  Author: Gabriel
- */ 
-
 #include "ultrasonic.h"
 #include <avr/delay.h>
+//#include <uart.h>
 
+
+//Uart usb;
 // This ISR records the time of the pin change
 volatile uint16_t _event_time;
 ISR(TIMER1_CAPT_vect){
@@ -36,6 +32,7 @@ uint16_t Ultrasonic::getRange(){
 	// No datasheet do sensor consta que 1 cm = 58 uS
 	// Para extrair os cm no nosso caso eh preciso dividir a largura do pulso por 116
 	// Multiplicmos o valor por 10 para obter os milimetros
+	
 	return (uint16_t)((uint32_t)getPulseWidth()*10/116);
 }
 
@@ -63,7 +60,12 @@ uint16_t Ultrasonic::getPulseWidth(){
 	
 	// Saves the falling edge time
 	falling_edge_time = _event_time;
-	
-	// Returns the difference
-	return (falling_edge_time - rising_edge_time); 
+		
+	// Calcula a diferenca
+	// Isso precisa ser feito pois o overflow acontece em 39999 e nao em 65535
+	if(falling_edge_time > rising_edge_time){
+		return falling_edge_time - rising_edge_time;
+	} else {
+		return 39999 - rising_edge_time + falling_edge_time;
+	}
 }
