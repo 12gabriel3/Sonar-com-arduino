@@ -2,28 +2,24 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
-#include <stdint.h>
+#include <avr/interrupt.h>
+#include <inttypes.h>
 #include "uart.h"
-#include "ultrasonic.h"
-#include "servo.h"
+#include "twi.h"
 
 
 int main(void)
 {
 	Uart usb(250000);
-	Ultrasonic sensor;
-	Servo servo;
+	TWI lcd(0x27);
 	
 	sei();
 	
-	uint8_t angulo = 0;
+	lcd.writeByte(0b01010101);
 	
 	while (1) 
     {
-		usb.println(sensor.getRange());
-		servo.setAngle(angulo);
-		angulo = angulo == 180? 0 : angulo + 1;
-		_delay_ms(100);
-    }
+		
+	}
 }
 

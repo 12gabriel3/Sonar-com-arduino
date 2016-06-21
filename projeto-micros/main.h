@@ -9,9 +9,8 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
-
-
-
-
+#include <avr/io.h>
+#include <util/delay.h>
+#include <inttypes.h>
 
 #endif /* MAIN_H_ */
