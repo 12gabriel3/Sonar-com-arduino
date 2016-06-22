@@ -5,18 +5,16 @@
 #include <avr/interrupt.h>
 #include <inttypes.h>
 #include "uart.h"
-#include "twi.h"
+#include "lcd.h"
 
 
 int main(void)
 {
 	Uart usb(250000);
-	TWI lcd(0x27);
+	LCD lcd(0x27);
 	
 	sei();
-	
-	lcd.writeByte(0b01010101);
-	
+		
 	while (1) 
     {
 		

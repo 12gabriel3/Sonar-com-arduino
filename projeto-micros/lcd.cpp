@@ -1,6 +1,6 @@
- #include "TWI.h"
+ #include "lcd.h"
  
- TWI::TWI(uint8_t _address){
+ LCD::LCD(uint8_t _address){
 	 // Frequencia do bus
 	 // prescaler = 1
 	 // TWBR = 72
@@ -14,34 +14,54 @@
 	 // Guarda o endereco
 	 address = _address;
 	 
+	 // Sequencia para inicializar o LCD em modo de 4 bits
+	 _delay_ms(15);
+	 sendStart();
+	 waitForReady();
+	 
+	 sendByte(address<<1);
+	 waitForReady();
+	 
+	 sendByte((0x03<<4)|(1<<EN));
+	 waitForReady();
+	 _delay_ms(5);
+	 
+	 sendByte((0x03<<4)|(1<<EN));
+	 waitForReady();
+	 _delay_ms(5);
+	 
+	 sendStop();
+	 
+	 
+	 
  }
  
- void TWI::sendStart(){
+ void LCD::sendStart(){
 	 TWCR = (1<<TWINT)|(1<<TWSTA)|(1<<TWEN);
  }
  
- int8_t TWI::isReady(){
+ int8_t LCD::isReady(){
 	return (TWCR & (1<<TWINT));
  }
  
- void TWI::waitForReady(){
+ void LCD::waitForReady(){
 	 while (!isReady());
  }
  
- void TWI::sendByte(uint8_t data){
+ void LCD::sendByte(uint8_t data){
 	 TWDR = data;
 	 TWCR = (1<<TWINT)|(1<<TWEN);
  }
  
- void TWI::sendStop(){
+ void LCD::sendStop(){
 	 TWCR = (1<<TWINT)|(1<<TWEN)|(1<<TWSTO);
  }
  
- uint8_t TWI::getStatus(){
+ uint8_t LCD::getStatus(){
 	 return (TWSR & 0xF8);
  }
  
- void TWI::writeByte(uint8_t data){
+ void LCD::writeByte(uint8_t data){
 	 sendStart();
 	 waitForReady();
 	 

@@ -176,10 +176,10 @@
     <Compile Include="servo.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="twi.cpp">
+    <Compile Include="lcd.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="twi.h">
+    <Compile Include="lcd.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="uart.cpp">
