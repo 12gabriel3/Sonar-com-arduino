@@ -69,7 +69,7 @@ void LCD::turnOff(){
 	sendByte(address<<1);
 	waitForReady();
 	
-	writeCommand(0x00);
+	writeCommand(0x08);
 	
 	sendStop();
 } 
@@ -81,7 +81,7 @@ void LCD::turnOn(){
 	sendByte(address<<1);
 	waitForReady();
 	
-	writeCommand(0x08);
+	writeCommand(0x0C);
 	
 	sendStop();
 }
