@@ -17,7 +17,10 @@ int main(void)
 		
 	while (1) 
     {
-		
+	    _delay_ms(500);
+		lcd.turnOff();
+		_delay_ms(500);
+		lcd.turnOn();
 	}
 }
 

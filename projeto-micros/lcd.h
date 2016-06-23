@@ -21,6 +21,9 @@
 class LCD{
 		uint8_t address;
 	public:
+		void writeCommand(uint8_t);
+		void turnOff();
+		void turnOn();
 		uint8_t getStatus();
 		void sendStart();
 		void sendStop();

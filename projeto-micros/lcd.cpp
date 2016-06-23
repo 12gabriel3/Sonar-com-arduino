@@ -24,17 +24,67 @@
 	 
 	 sendByte((0x03<<4)|(1<<EN));
 	 waitForReady();
+	 sendByte(0x00);
+	 waitForReady();
 	 _delay_ms(5);
 	 
 	 sendByte((0x03<<4)|(1<<EN));
 	 waitForReady();
+	 sendByte(0x00);
+	 waitForReady();
+	 _delay_us(100);
+	 
+	 sendByte((0x03<<4)|(1<<EN));
+	 waitForReady();
+	 sendByte(0x00);
+	 waitForReady();
 	 _delay_ms(5);
 	 
+	 sendByte((0x02<<4)|(1<<EN));
+	 waitForReady();
+	 sendByte(0x00);
+	 waitForReady();
+	 
 	 sendStop();
-	 
-	 
-	 
  }
+ 
+ void LCD::writeCommand(uint8_t command){
+	 sendByte((command & 0xF0)|(1<<EN));
+	 waitForReady();
+	 sendByte(0x00);
+	 waitForReady();
+	 
+	 sendByte((command<<4)|(1<<EN));
+	 waitForReady();
+	 sendByte(0x00);
+	 waitForReady();
+ }
+ 
+void LCD::turnOff(){
+	sendStart();
+	waitForReady();
+	
+	sendByte(address<<1);
+	waitForReady();
+	
+	writeCommand(0x00);
+	waitForReady();
+	
+	sendStop();
+} 
+
+void LCD::turnOn(){
+	sendStart();
+	waitForReady();
+	
+	sendByte(address<<1);
+	waitForReady();
+	
+	writeCommand(0x08);
+	waitForReady();
+	
+	sendStop();
+}
  
  void LCD::sendStart(){
 	 TWCR = (1<<TWINT)|(1<<TWSTA)|(1<<TWEN);
