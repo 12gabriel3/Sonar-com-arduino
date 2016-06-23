@@ -24,25 +24,25 @@
 	 
 	 sendByte((0x03<<4)|(1<<EN));
 	 waitForReady();
-	 sendByte(0x00);
+	 sendByte((0x03<<4));
 	 waitForReady();
 	 _delay_ms(5);
 	 
 	 sendByte((0x03<<4)|(1<<EN));
 	 waitForReady();
-	 sendByte(0x00);
+	 sendByte((0x03<<4));
 	 waitForReady();
 	 _delay_us(100);
 	 
 	 sendByte((0x03<<4)|(1<<EN));
 	 waitForReady();
-	 sendByte(0x00);
+	 sendByte((0x03<<4));
 	 waitForReady();
 	 _delay_ms(5);
 	 
 	 sendByte((0x02<<4)|(1<<EN));
 	 waitForReady();
-	 sendByte(0x00);
+	 sendByte((0x02<<4));
 	 waitForReady();
 	 
 	 sendStop();
@@ -51,12 +51,12 @@
  void LCD::writeCommand(uint8_t command){
 	 sendByte((command & 0xF0)|(1<<EN));
 	 waitForReady();
-	 sendByte(0x00);
+	 sendByte(command & 0xF0);
 	 waitForReady();
 	 
 	 sendByte((command<<4)|(1<<EN));
 	 waitForReady();
-	 sendByte(0x00);
+	 sendByte(command<<4);
 	 waitForReady();
  }
  
