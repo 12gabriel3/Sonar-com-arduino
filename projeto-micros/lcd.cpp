@@ -46,6 +46,10 @@
 	 waitForReady();
 	 
 	 writeCommand(0x28);
+	 writeCommand(0x0E); // clear the screen
+	 writeCommand(0x01); // display on cursor on
+	 writeCommand(0x06); // increment cursor
+	 writeCommand(0x80); // row 1 column 1
 	 
 	 sendStop();
  }
