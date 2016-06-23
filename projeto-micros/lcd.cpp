@@ -45,6 +45,8 @@
 	 sendByte((0x02<<4));
 	 waitForReady();
 	 
+	 writeCommand(0x28);
+	 
 	 sendStop();
  }
  
@@ -68,7 +70,6 @@ void LCD::turnOff(){
 	waitForReady();
 	
 	writeCommand(0x00);
-	waitForReady();
 	
 	sendStop();
 } 
@@ -81,7 +82,6 @@ void LCD::turnOn(){
 	waitForReady();
 	
 	writeCommand(0x08);
-	waitForReady();
 	
 	sendStop();
 }
