@@ -22,47 +22,43 @@
 	 sendByte(address<<1);
 	 waitForReady();
 	 
-	 sendByte((0x03<<4)|(1<<EN));
+	 sendByte((0x03<<4)|EN);
 	 waitForReady();
 	 sendByte((0x03<<4));
 	 waitForReady();
 	 _delay_ms(5);
 	 
-	 sendByte((0x03<<4)|(1<<EN));
+	 sendByte((0x03<<4)|EN);
 	 waitForReady();
 	 sendByte((0x03<<4));
 	 waitForReady();
 	 _delay_us(100);
 	 
-	 sendByte((0x03<<4)|(1<<EN));
+	 sendByte((0x03<<4)|EN);
 	 waitForReady();
 	 sendByte((0x03<<4));
 	 waitForReady();
 	 _delay_ms(5);
 	 
-	 sendByte((0x02<<4)|(1<<EN));
+	 sendByte((0x02<<4)|EN);
 	 waitForReady();
 	 sendByte((0x02<<4));
 	 waitForReady();
 	 
 	 writeCommand(0x28);
-	 writeCommand(0x0E); // clear the screen
-	 writeCommand(0x01); // display on cursor on
-	 writeCommand(0x06); // increment cursor
-	 writeCommand(0x80); // row 1 column 1
 	 
 	 sendStop();
  }
  
  void LCD::writeCommand(uint8_t command){
-	 sendByte((command & 0xF0)|(1<<EN));
+	 sendByte((command & 0xF0)|EN|BL);
 	 waitForReady();
-	 sendByte(command & 0xF0);
+	 sendByte(command & 0xF0|BL);
 	 waitForReady();
 	 
-	 sendByte((command<<4)|(1<<EN));
+	 sendByte((command<<4)|EN|BL);
 	 waitForReady();
-	 sendByte(command<<4);
+	 sendByte(command<<4|BL);
 	 waitForReady();
  }
  

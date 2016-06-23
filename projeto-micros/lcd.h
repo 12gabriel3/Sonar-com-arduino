@@ -4,15 +4,12 @@
 /*
 	Byte enviado e coneccao fisica:
 	
-	D7 D6 D5 D4 - EN RW RS
+	D7 D6 D5 D4 BACK EN RW RS
 */
-#define RS 0
-#define RW 1
-#define EN 2
-#define D4 4
-#define D5 5
-#define D6 6
-#define D7 7
+#define RS 0x01
+#define RW 0x02
+#define EN 0x04
+#define BL 0x08
 
 #include <avr/io.h>
 #include <util/delay.h>
